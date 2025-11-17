@@ -19,7 +19,6 @@ if ($flight_id > 0) {
     if ($flight) {
         $flight_no = $flight['flight_no'];
 
-        // Menggunakan Transaksi untuk keamanan data
         mysqli_begin_transaction($conn);
 
         try {

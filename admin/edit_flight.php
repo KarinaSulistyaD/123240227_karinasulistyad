@@ -2,7 +2,7 @@
 session_start();
 include('../config.php');
 
-// Pengecekan Akses Admin [cite: 28, 29]
+
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     set_message("Akses ditolak. Anda harus login sebagai Admin.", "danger");
     header('Location: ../dashboard.php');

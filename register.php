@@ -18,9 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         set_message("Konfirmasi Password tidak cocok.", "danger");
     } else {
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-        $role = 'user'; // Default role saat registrasi adalah user biasa
+        $role = 'user'; 
 
-        // Cek duplikasi username
+     
         $check_query = "SELECT id FROM users WHERE username = '$username' OR email = '$email'";
         if (mysqli_num_rows(mysqli_query($conn, $check_query)) > 0) {
             set_message("Username atau Email sudah digunakan.", "danger");

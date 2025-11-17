@@ -2,10 +2,10 @@
 session_start();
 include('../config.php');
 
-// Pengecekan Akses User Biasa [cite: 25, 26]
+
 if (!isset($_SESSION['user_id'])) {
     set_message("Anda harus login untuk mengakses halaman pemesanan.", "danger");
-    header('Location: ../index.php'); // Arahkan ke halaman login
+    header('Location: ../index.php'); 
     exit();
 }
 if ($_SESSION['role'] !== 'user') {
@@ -16,7 +16,7 @@ if ($_SESSION['role'] !== 'user') {
 
 $flight_id = isset($_GET['flight_id']) ? intval($_GET['flight_id']) : 0;
 
-// Ambil data penerbangan
+
 $flight_query = "SELECT * FROM flights WHERE id = $flight_id";
 $flight_result = mysqli_query($conn, $flight_query);
 $flight = mysqli_fetch_assoc($flight_result);
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $passenger_name = mysqli_real_escape_string($conn, $_POST['passenger_name']);
     $identity_number = mysqli_real_escape_string($conn, $_POST['identity_number']);
 
-    // Cek ketersediaan kursi saat POST
+
     if ($seats_available <= 0) {
         set_message("Pemesanan gagal. Kursi penerbangan sudah penuh.", "danger");
         header("Location: booking.php?flight_id=$flight_id");
